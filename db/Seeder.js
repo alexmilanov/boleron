@@ -2,13 +2,12 @@ const casual = require('casual');
 const buildPolicyModel = require("./models/testPolicyModel");
 
 class Seeder {
-	static #NUMBER_OF_KNOWN_DOCS = 50;
-	
 	/**
-	 * @param {number} [numEntries=100] numEntries - set how many entries would be generated and saved to MongoDB
+	 * @param {number} [numEntries=100] - set how many entries would be generated and saved to MongoDB
+	 * @param {number} [numEntriesWithKnownValues=50] - numEntriesWithKnownValues - set how many entries with known values would be generated and saved to MongoDB
 	 * @returns {Promise<void>}
 	 */
-	static async seed(numEntries = 100) {
+	static async seed(numEntries = 100, numEntriesWithKnownValues = 50) {
 		let docs = [];
 
 		for(let counter = 0; counter < numEntries; counter++) {
@@ -16,7 +15,7 @@ class Seeder {
 			docs.push(document);
 		}
 
-		for(let counter = 0; counter < this.#NUMBER_OF_KNOWN_DOCS; counter++) {
+		for(let counter = 0; counter < this.numEntriesWithKnownValues; counter++) {
 			const document = this.#composeDocsWithKnownValues();
 			docs.push(document);
 		}

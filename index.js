@@ -7,7 +7,8 @@ const process = require('process');
     try {
         //step 1 - seed the db with randomly generated docs
         const DOCUMENTS_COUNT = 10000;
-        await Seeder.seed(DOCUMENTS_COUNT);
+        const DOCUMENTS_WITH_KNOWN_VALUES = 50;
+        await Seeder.seed(DOCUMENTS_COUNT, DOCUMENTS_WITH_KNOWN_VALUES);
         console.log(`Successfully saved ${DOCUMENTS_COUNT}`);
 
         //step 2 - fetch the first 50 documents that contain string XXXX (match )
